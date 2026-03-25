@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Love Message 💖</title>
+</head>
+<body style="text-align:center; font-family:sans-serif; margin-top:50px;">
+
+  <h2>Send Message 💌</h2>
+
+  <input id="msg" placeholder="Type message..." style="padding:10px; width:250px;">
+  <br><br>
+
+  <button onclick="sendMessage()" style="padding:10px 20px;">
+    Send ❤️
+  </button>
+
+  <p id="status"></p>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyC1gHwEaZREHxSAqmpUTXbj8ZSViGecM9k",
+      databaseURL: "https://gift-display-default-rtdb.firebaseio.com"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    function sendMessage() {
+      const message = document.getElementById("msg").value;
+      db.ref("loveMessage").set(message);
+      document.getElementById("status").innerText = "Sent ❤️";
+    }
+  </script>
+
+</body>
+</html>
